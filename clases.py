@@ -93,7 +93,7 @@ class GestionImagenes:
 
     def binarizar_y_texto(self, ruta_img, umbral, tam_kernel):
         img = cv2.imread(ruta_img, cv2.IMREAD_GRAYSCALE)
-        _, binarizada = cv2.threshold(img, umbral, 255, cv2.THRESH_BINARY)
+        binarizada = cv2.threshold(img, umbral, 255, cv2.THRESH_BINARY)
         kernel = np.ones((tam_kernel, tam_kernel), np.uint8)
         morfologia = cv2.morphologyEx(binarizada, cv2.MORPH_CLOSE, kernel)
         cv2.putText(morfologia, f'Imagen binarizada, umbral: {umbral}, tamaño kernel: {tam_kernel}',
